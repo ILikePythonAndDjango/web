@@ -9,4 +9,12 @@ def wsgi_application(environ, start_response):
         ('Content-Length', str(len(data)))
     ]
     start_response(status, response_headers)
-    return [ environ["QUERY_STRING"].replace("&", "\n").encode("utf-8") ]
+    return map(
+        #Encoding strings in unicode
+        lambda string: string.encode("utf-8"),
+        map(
+            #make array with properties
+            lambda string: string + "\n",
+            environ["QUERY_STRING"].split("&")
+        )
+    )
