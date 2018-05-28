@@ -1,4 +1,0 @@
-# ignore all files which's python byte-code
-*.pyc
-# ignore all directories which have python byte-code
-__pycache__
