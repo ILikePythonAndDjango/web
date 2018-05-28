@@ -2,3 +2,6 @@
 *.pyc
 # ignore all directories which have python byte-code
 __pycache__
+# ignore data bases
+*.sqlite
+*.sqlite3
