@@ -25,7 +25,7 @@ SECRET_KEY = 'w+h$xm1#-wbd@l%i@442=pr3ko1iwt#=7-jnqe!pw1%1i37_d&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['10.42.10.173','10.42.114.95','0.0.0.0','127.0.0.1','localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,18 +41,7 @@ INSTALLED_APPS = [
     'qa',
 ]
 
-MIDDLEWARE_CLASSES = (                                                          
-    'django.contrib.sessions.middleware.SessionMiddleware',                     
-    'django.middleware.common.CommonMiddleware',                                
-    #'django.middleware.csrf.CsrfViewMiddleware',                               
-    #'django.contrib.auth.middleware.AuthenticationMiddleware',                 
-    #'django.contrib.auth.middleware.SessionAuthenticationMiddleware',          
-    'django.contrib.messages.middleware.MessageMiddleware',                     
-    #'django.middleware.clickjacking.XFrameOptionsMiddleware',                  
-    #'django.middleware.security.SecurityMiddleware',                           
-) 
 
-'''
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -63,7 +52,6 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-'''
 
 ROOT_URLCONF = 'ask.urls'
 
