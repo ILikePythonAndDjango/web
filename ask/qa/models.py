@@ -1,10 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
 class QuestionManager(models.Manager):
 
     def new(self):
-        return self.order_by('-addet_ad')
+        return self.order_by('-added_at')
 
     def popular(self):
         return self.order_by('-rating')
@@ -20,6 +21,9 @@ class Question(models.Model):
     author = models.ForeignKey(User)
     likes = models.ManyToManyField(User, related_name='likes_set')
 
+    def get_url(self):
+        return reverse("question", kwargs={"pk": self.id})
+
     def __str__(self):
         return self.title
 
@@ -30,4 +34,4 @@ class Answer(models.Model):
     author = models.ForeignKey(User)
 
     def __str__(self):
-        return "on " + str(self.question) + " from " + self.author.get_full_name()
+        return "Answer from {} at {}.".format(self.author.username, self.added_at) 

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    <ul>
+    {% for question in questions %}
+        <li>
+        <a href="{{ question.get_url }}">{{ question|truncatechars:100 }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

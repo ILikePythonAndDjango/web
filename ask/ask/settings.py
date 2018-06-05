@@ -38,7 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    #Applications
     'qa',
+
+    #Other libraries
+    'autofixture',
 ]
 
 
@@ -58,7 +62,7 @@ ROOT_URLCONF = 'ask.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [ BASE_DIR + "/templates/" ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
