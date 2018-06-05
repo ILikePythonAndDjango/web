@@ -14,6 +14,9 @@ def index(request):
     page = paginator.page(page)
     return render(request, "index.html", {
         'questions': page.object_list,
+        'path': '/?page=',
+        'paginator': paginator,
+        'page': page,
     })
 
 @require_GET
@@ -25,6 +28,9 @@ def popular(request):
     page = paginator.page(page)
     return render(request, "index.html", {
         'questions': page.object_list,
+        'path': '/popular/?page=',
+        'paginator': paginator,
+        'page': page,
     })
 
 @require_GET

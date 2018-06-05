@@ -12,6 +12,21 @@
 {% block header %}
     <hr>
 {% endblock %}
+{% block nav %}
+<dir class="nav">
+    <nav><ul class="pagination">
+    {% for pnum in paginator.page_range %}
+        {% if pnum == page.number %}
+        <li class="active">
+        {% else %}
+        <li>
+        {% endif %}
+        <a href="{{ path }}{{ pnum }}">{{ pnum }}</a>
+        </li>
+    {% endfor %}
+    </ul></nav>
+</dir>
+{% endblock %}
 {% block content %}
 {% endblock %}
 {% block footer %}
