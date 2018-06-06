@@ -5,3 +5,6 @@ __pycache__
 # ignore data bases
 *.sqlite
 *.sqlite3
+# ignore any virtual enviroment which called 'core'
+core
+core/*
