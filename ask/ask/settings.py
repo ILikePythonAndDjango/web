@@ -40,9 +40,6 @@ INSTALLED_APPS = [
 
     #Applications
     'qa',
-
-    #Other libraries
-    'autofixture',
 ]
 
 
