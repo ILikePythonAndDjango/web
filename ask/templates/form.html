@@ -1,0 +1,30 @@
+{% block non_field_errors %}
+{% for error in form.non_field_errors %}
+<div class='alert alert-danger'>{{ error }}</div>
+{% endfor %}
+{% endblock %}
+{% block form_options %}
+<form class='form-horizontal' method='POST' action='/ask/'>
+{% endblock %}
+{% block csrf %}
+    {% csrf_token %}
+{% endblock %}
+{% block field_set %}
+    <fieldset>
+    {% for field in form.visible_fields %}
+    <div class='control_group{% if field.errors %} has_error{% endif %}'>
+        <label class='control_label'>{{ field.label }}</label>
+        <div class='controls' style="width: 500px;">{{ field }}</div>
+    </div>
+    {% endfor %}
+    {% for field in form.hidden_fields %}
+    <div class='control_group{% if field.errors %} has_error{% endif %}'>
+        <div class='controls'>{{ field }}</div>
+    </div>
+    {% endfor %}
+    </fieldset>
+{% endblock %}
+    <div class='form_actions'>
+        <button type='submit' class='btn btn-primary'>Save</button>
+    </div>
+</form>
