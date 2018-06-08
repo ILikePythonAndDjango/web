@@ -12,7 +12,19 @@
 </head>
 <body>
 {% block header %}
-    <hr>
+<hr>
+<div class="header">
+<ul class='pagination'>
+    <li><a href='/login/'>Log in</a></li>
+    <li><a href='/'>Log out</a></li>
+    <li><a href='/signup/'>Sign up</a></li>
+    <li><a href='/'>Home</a></li>
+</ul>
+<div style='text-align: right; float: right;'>
+{{ request.user }}
+</div>
+</div>
+<hr>
 {% endblock %}
 {% block nav %}
 <dir class="nav">

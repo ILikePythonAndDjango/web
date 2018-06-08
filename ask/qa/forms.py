@@ -1,38 +1,34 @@
 from django import forms
+
 from .models import Question, Answer
+from django.contrib.auth.models import User
+
+class LogInForm(forms.Form):
+    username = forms.CharField(max_length=100)
+    password = forms.CharField(widget=forms.PasswordInput)
+
+class SignUpForm(forms.Form):
+    username = forms.CharField(max_length=100)
+    email = forms.EmailField()
+    password = forms.CharField(widget=forms.PasswordInput)
+
+    def save(self):
+        return User.objects.create_user(**self.cleaned_data)
 
 class AskForm(forms.Form):
     title = forms.CharField(max_length=255)
     text = forms.CharField(widget=forms.Textarea)
 
-    def __init__(self, user, *args, **kwargs):
-        self._user = user
-        super(AskForm, self).__init__(*args, **kwargs)
-
-    def clean(self):
-        pass
-
     def save(self):
         self.cleaned_data['author'] = self._user
-        question = Question(**self.cleaned_data)
-        question.save()
-        return question
+        return Question.objects.create(**self.cleaned_data)
 
 class AnswerForm(forms.Form):
 
     text = forms.CharField(widget=forms.Textarea)
     question = forms.ModelChoiceField(Question.objects, widget=forms.HiddenInput)
 
-    def __init__(self, user, *args, **kwargs):
-        self._user = user
-        super(AnswerForm, self).__init__(*args, **kwargs)
-
-    def clean(self):
-        pass
-
     def save(self):
         self.cleaned_data['author'] = self._user
-        answer = Answer(**self.cleaned_data)
-        answer.save()
-        return answer
+        return Answer.objects.create(**self.cleaned_data)
 

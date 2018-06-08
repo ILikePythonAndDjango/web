@@ -27,11 +27,22 @@ class Question(models.Model):
     def __str__(self):
         return self.title
 
+class AnswerManager(QuestionManager):
+
+    def sort(self):
+        return self.order_by('-id')
+
 class Answer(models.Model):
+
+    objects = AnswerManager()
+
     text = models.TextField()
     added_at = models.DateTimeField(blank=True, auto_now_add=True)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     author = models.ForeignKey(User)
 
+    def get_url(self):
+        return self.question.get_url()
+
     def __str__(self):
-        return "Answer from {} at {}.".format(self.author.username, self.added_at) 
+        return "Answer from {} at {}.".format(self.author.username, self.added_at)

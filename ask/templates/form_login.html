@@ -1,0 +1,9 @@
+{% extends 'form.html' %}
+{% block non_field_errors %}
+{{ block.super }}
+<div class='alert alert-danger'>{{ error }}</div>
+{% endblock %}
+{% block form_options %}
+<form class='form-horizontal' method='POST' action='/login/'>
+{% endblock %}
+
